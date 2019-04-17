@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "gls-core-service": "^3.18.0",
     "pouchdb": "^7.0.0"
   },
   "devDependencies": {

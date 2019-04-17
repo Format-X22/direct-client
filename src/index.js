@@ -1,3 +1,1 @@
-const Start = require('./Start');
-
-new Start().start();
+require('gls-core-service').utils.defaultStarter(require('./Main'));

@@ -1,11 +1,19 @@
-const { app, BrowserWindow } = require('electron');
+const electron = require('electron');
+const app = electron.app;
+const Window = electron.BrowserWindow;
+const core = require('gls-core-service');
+const stats = core.utils.statsClient;
+const BasicMain = core.services.BasicMain;
 
-class Start {
+class Main extends BasicMain {
     constructor() {
+        super(stats);
+
+        this.addNested(); // TODO -
         this._mainWindow = null;
     }
 
-    start() {
+    async boot() {
         app.on('ready', this._createMainWindow.bind(this));
         app.on('window-all-closed', () => {
             if (process.platform !== 'darwin') {
@@ -20,18 +28,18 @@ class Start {
     }
 
     _createMainWindow() {
-        this._mainWindow = new BrowserWindow({
+        this._mainWindow = new Window({
             width: 1024,
             height: 600,
             webPreferences: {
                 nodeIntegration: true,
             },
         });
-        this._mainWindow.loadFile('./src/index.html');
+        this._mainWindow.loadFile('./src/static/index.html');
         this._mainWindow.on('closed', function() {
             this._mainWindow = null;
         });
     }
 }
 
-module.exports = Start;
+module.exports = Main;
