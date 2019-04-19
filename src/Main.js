@@ -15,11 +15,7 @@ class Main extends BasicMain {
 
     async boot() {
         app.on('ready', this._createMainWindow.bind(this));
-        app.on('window-all-closed', () => {
-            if (process.platform !== 'darwin') {
-                app.quit();
-            }
-        });
+        app.on('window-all-closed', () => app.quit());
         app.on('activate', () => {
             if (this._mainWindow === null) {
                 this._createMainWindow();

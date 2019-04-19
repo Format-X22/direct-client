@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8" />
-        <title>Wallet</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Кошелек</title>
+        <link rel="stylesheet" href="css/bootstrap-reboot.css" />
+        <link rel="stylesheet" href="css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
     </head>
     <body>
-        V1
+        <nav class="navbar fixed-top navbar-expand navbar-dark bg-primary">
+            <span class="navbar-brand mb-0 h1">Authority Network</span>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li
+                        id="top-accounts"
+                        class="nav-item active"
+                        onclick="topNavigationComponent.activateAccountsPage()"
+                    >
+                        <a class="nav-link" href="javascript:void(0);">Аккаунты</a>
+                    </li>
+                    <li
+                        id="top-assets"
+                        class="nav-item"
+                        onclick="topNavigationComponent.activateAssetsPage()"
+                    >
+                        <a class="nav-link" href="javascript:void(0);">Ассеты</a>
+                    </li>
+                    <li
+                        id="top-exchanges"
+                        class="nav-item"
+                        onclick="topNavigationComponent.activateExchangesPage()"
+                    >
+                        <a class="nav-link" href="javascript:void(0);">Обмены</a>
+                    </li>
+                    <li
+                        id="top-history"
+                        class="nav-item"
+                        onclick="topNavigationComponent.activateHistoryPage()"
+                    >
+                        <a class="nav-link" href="javascript:void(0);">История</a>
+                    </li>
+                    <li
+                        id="top-control"
+                        class="nav-item"
+                        onclick="topNavigationComponent.activateControlPage()"
+                    >
+                        <a class="nav-link" href="javascript:void(0);">Управление</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a
+                        class="nav-link"
+                        href="javascript:void(0);"
+                        id="top-current-account"
+                        onclick="topNavigationComponent.activateAccountsPage()"
+                    >
+                        Аккаунт:
+                        <span id="top-current-account-value">ID40806df7a8a2eaa</span>&hellip;
+                        <!-- TODO - -->
+                    </a>
+                </span>
+            </div>
+        </nav>
+        <script>
+            const TopNavigationComponent = require('../components/TopNavigation');
+            const topNavigationComponent = new TopNavigationComponent();
+        </script>
     </body>
 </html>
