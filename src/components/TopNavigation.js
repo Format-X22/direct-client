@@ -1,3 +1,4 @@
+// TODO Nodes page
 class TopNavigation {
     constructor() {
         this._accountsMenuElement = document.getElementById('top-accounts');
@@ -14,38 +15,46 @@ class TopNavigation {
             this._controlMenuElement,
         ];
 
-        this._currentAccountMenuElement = document.getElementById('top-current-account');
-        this._currentAccountMenuValueElement = document.getElementById('top-current-account-value');
+        this._accountsContainerElement = document.getElementById('container-accounts');
+        this._assetsContainerElement = document.getElementById('container-assets');
+        this._exchangesContainerElement = document.getElementById('container-exchanges');
+        this._historyContainerElement = document.getElementById('container-history');
+        this._controlContainerElement = document.getElementById('container-control');
+
+        this._containerElements = [
+            this._accountsContainerElement,
+            this._assetsContainerElement,
+            this._exchangesContainerElement,
+            this._historyContainerElement,
+            this._controlContainerElement,
+        ];
     }
 
     activateAccountsPage() {
-        this._deactivateAllMenu();
-        this._activateMenuItem(this._accountsMenuElement);
-        // TODO -
+        this._toggle(this._accountsMenuElement, this._accountsContainerElement);
     }
 
     activateAssetsPage() {
-        this._deactivateAllMenu();
-        this._activateMenuItem(this._assetsMenuElement);
-        // TODO -
+        this._toggle(this._assetsMenuElement, this._assetsContainerElement);
     }
 
     activateExchangesPage() {
-        this._deactivateAllMenu();
-        this._activateMenuItem(this._exchangesMenuElement);
-        // TODO -
+        this._toggle(this._exchangesMenuElement, this._exchangesContainerElement);
     }
 
     activateHistoryPage() {
-        this._deactivateAllMenu();
-        this._activateMenuItem(this._historyMenuElement);
-        // TODO -
+        this._toggle(this._historyMenuElement, this._historyContainerElement);
     }
 
     activateControlPage() {
+        this._toggle(this._controlMenuElement, this._controlContainerElement);
+    }
+
+    _toggle(menu, container) {
         this._deactivateAllMenu();
-        this._activateMenuItem(this._controlMenuElement);
-        // TODO -
+        this._activateMenuItem(menu);
+        this._deactivateAllContainers();
+        this._activateContainer(container);
     }
 
     _deactivateAllMenu() {
@@ -54,8 +63,18 @@ class TopNavigation {
         }
     }
 
+    _deactivateAllContainers() {
+        for (const element of this._containerElements) {
+            element.classList.add('d-none');
+        }
+    }
+
     _activateMenuItem(item) {
         item.classList.add('active');
+    }
+
+    _activateContainer(item) {
+        item.classList.remove('d-none');
     }
 }
 
