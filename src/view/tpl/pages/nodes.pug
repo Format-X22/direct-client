@@ -1,0 +1,10 @@
+include ../components/widgets
+
+mixin nodesPage
+    #nodes.container.d-none(data-page-container)
+        +containerHeader('Подключенные ноды', 'Не подключено ни одной ноды...')
+            +pageControlButton('Подключить')(data-connect='')
+        .row.mt-5
+            .col
+                | Вы можете подключиться к основной ноде компании
+                button.btn.btn-success.btn-sm.ml-2(type='submit') Подключиться

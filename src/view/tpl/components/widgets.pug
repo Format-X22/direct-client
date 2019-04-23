@@ -1,0 +1,16 @@
+mixin menuItem(binding, title)
+    li.nav-item(data-top-menu=binding)&attributes(attributes)
+        a.nav-link.clickable=title
+
+mixin containerHeader(headerText, emptyPlaceholder)
+    .row
+        .col-5
+            h2.h1=headerText
+
+        .col-7.text-right
+            block
+    .row.ml-auto(data-placeholder='')
+        .col=emptyPlaceholder
+
+mixin pageControlButton(title)
+    button.btn.btn-primary.mr-1(type='submit')&attributes(attributes)=title

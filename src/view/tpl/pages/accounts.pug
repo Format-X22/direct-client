@@ -1,0 +1,36 @@
+include ../components/widgets
+
+mixin accountsPage
+    #accounts.container(data-page-container)
+        +containerHeader('Ваши аккаунты', 'У вас ещё нет ни одного аккаунта...')
+            +pageControlButton('Создать')(data-create='')
+        .row.mt-4
+            .col
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Аккаунт
+                            th.text-right(scope='col') Управление
+                    tbody
+                        tr
+                            td(scope='row') 1
+                            td ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.text-right
+                                button.btn.btn-success.btn-sm.mr-1(type='submit') Текущий аккаунт
+                                button.btn.btn-info.btn-sm.mr-1(type='submit') &#10515;
+                                button.btn.btn-danger.btn-sm.mr-1(type='submit') &#10005;
+                        tr
+                            td(scope='row') 2
+                            td ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc607
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать текущим
+                                button.btn.btn-info.btn-sm.mr-1(type='submit') &#10515;
+                                button.btn.btn-danger.btn-sm.mr-1(type='submit') &#10005;
+                        tr
+                            td(scope='row') 3
+                            td ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc608
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать текущим
+                                button.btn.btn-info.btn-sm.mr-1(type='submit') &#10515;
+                                button.btn.btn-danger.btn-sm.mr-1(type='submit') &#10005;

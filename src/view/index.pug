@@ -1,0 +1,29 @@
+include tpl/components/navigation
+include tpl/components/widgets
+include tpl/components/scripts
+include tpl/components/styles
+include tpl/pages/accounts
+include tpl/pages/nodes
+include tpl/pages/assets
+include tpl/pages/exchanges
+include tpl/pages/history
+include tpl/pages/control
+
+doctype html
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        title Authority Network Client
+        
+        +styles
+    body
+        +navigation
+        div(style='margin-top: 120px')
+            +accountsPage
+            +nodesPage
+            +assetsPage
+            +exchangesPage
+            +historyPage
+            +controlPage
+        +scripts

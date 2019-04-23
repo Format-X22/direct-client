@@ -1,0 +1,12 @@
+include ../components/widgets
+
+mixin controlPage
+    #control.container.d-none(data-page-container)
+        .row
+            .col-9
+                h2.h1 Управление вашими нодами
+                    button.btn.btn-primary.btn-sm.d-inline-block.ml-1(type='submit') ?
+            .col-3.text-right
+                +pageControlButton('Подключить')(data-connect='')
+        .row.ml-auto
+            .col У вас нет ни одной подключенной ноды...

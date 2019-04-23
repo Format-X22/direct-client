@@ -1,0 +1,7 @@
+include ../components/widgets
+
+mixin exchangesPage
+    #exchanges.container.d-none(data-page-container)
+        +containerHeader('Доступные обмены', 'Сейчас нет доступных обменов...')
+            +pageControlButton('Обновить')(data-refresh='')
+            +pageControlButton('Создать')(data-create='')

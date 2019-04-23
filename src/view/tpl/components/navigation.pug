@@ -1,0 +1,20 @@
+include widgets
+
+mixin navigation
+    nav.navbar.fixed-top.navbar-expand.navbar-dark.bg-primary
+        span.navbar-brand.mb-0.h1.ml-3 Authority Network
+        .collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                +menuItem('accounts', 'Аккаунты')#account-menu.active
+                +menuItem('nodes', 'Ноды')
+                +menuItem('assets', 'Ассеты')
+                +menuItem('exchanges', 'Обмены')
+                +menuItem('history', 'История')
+                +menuItem('control', 'Управление')
+
+            span#account-display-container.navbar-text
+                a#account-display.nav-link.clickable
+                    | Аккаунт:
+                    span#account-display-value  не выбран
+                    | &hellip;
+                

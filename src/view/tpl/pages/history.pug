@@ -1,0 +1,9 @@
+include ../components/widgets
+
+mixin historyPage
+    #history.container.d-none(data-page-container)
+        +containerHeader('История', 'История пуста...')
+            +pageControlButton('Обновить')(data-refresh='')
+            +pageControlButton('Для своего аккаунта').d-none(data-for-personal='')
+            +pageControlButton('Для не своего аккаунта')(data-for-another='')
+            +pageControlButton('По номеру эвента')(data-by-event='')

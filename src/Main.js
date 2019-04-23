@@ -27,11 +27,9 @@ class Main extends BasicMain {
         this._mainWindow = new Window({
             width: 1024,
             height: 600,
-            webPreferences: {
-                nodeIntegration: true,
-            },
+            webPreferences: {},
         });
-        this._mainWindow.loadFile('./src/static/index.html');
+        this._mainWindow.loadFile('./src/view/index.html');
         this._mainWindow.on('closed', function() {
             this._mainWindow = null;
         });
