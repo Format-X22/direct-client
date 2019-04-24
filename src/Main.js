@@ -4,12 +4,17 @@ const Window = electron.BrowserWindow;
 const core = require('gls-core-service');
 const stats = core.utils.statsClient;
 const BasicMain = core.services.BasicMain;
+const Ipc = require('./services/Ipc');
+const Connector = require('./services/Connector');
 
 class Main extends BasicMain {
     constructor() {
         super(stats);
 
-        this.addNested(); // TODO -
+        this._ipc = new Ipc();
+        this._connector = new Connector();
+
+        this.addNested(this._ipc, this._connector);
         this._mainWindow = null;
     }
 
@@ -29,7 +34,7 @@ class Main extends BasicMain {
             height: 600,
             webPreferences: {},
         });
-        this._mainWindow.loadFile('./src/view/index.html');
+        this._mainWindow.loadFile('./src/views/index.html');
         this._mainWindow.on('closed', function() {
             this._mainWindow = null;
         });

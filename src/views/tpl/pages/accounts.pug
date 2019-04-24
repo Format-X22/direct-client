@@ -3,8 +3,8 @@ include ../components/widgets
 mixin accountsPage
     #accounts.container(data-page-container)
         +containerHeader('Ваши аккаунты', 'У вас ещё нет ни одного аккаунта...')
-            +pageControlButton('Создать')(data-create='')
-            +pageControlButton('Импортировать')(data-import='')
+            +pageControlButton('Создать')#accounts-create
+            +pageControlButton('Импортировать')#accounts-import
         .row.mt-4
             .col
                 table.table
