@@ -9,8 +9,11 @@ mixin containerHeader(headerText, emptyPlaceholder)
 
         .col-7.text-right
             block
-    .row.ml-auto(data-placeholder='')
+    .row.ml-auto(data-empty-placeholder='')
         .col=emptyPlaceholder
 
 mixin pageControlButton(title)
     button.btn.btn-primary.mr-1(type='submit')&attributes(attributes)=title
+
+mixin loading
+    #loading-mask.loading-mask.d-none
