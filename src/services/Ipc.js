@@ -17,7 +17,7 @@ class Ipc extends BasicService {
         this._handel('local.selectAccount', this._local.selectAccount, this._local);
         this._handel('local.exportAccount', this._local.exportAccount, this._local);
         this._handel('local.importAccount', this._local.importAccount, this._local);
-        this._handel('local.destroyAccount', this._local.destroyAccount, this._local);
+        this._handel('local.deleteAccount', this._local.deleteAccount, this._local);
     }
 
     _handel(point, handler, scope) {

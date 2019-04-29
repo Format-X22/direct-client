@@ -9,7 +9,7 @@ const store = new Store({ encryptionKey: 'just obfuscate for monkey fingers' });
 class Local extends BasicController {
     constructor(...args) {
         super(...args);
-        
+
         store.set('accounts', store.get('accounts') || []);
     }
 
@@ -24,7 +24,7 @@ class Local extends BasicController {
             .update(publicKey)
             .digest('hex');
         const accountId = `ID${idHash}`;
-        const account = { accountId, publicKey, privateKey };
+        const account = { accountId, publicKey, privateKey, isCurrent: false };
         const accounts = store.get('accounts');
 
         accounts.push(account);
@@ -46,8 +46,13 @@ class Local extends BasicController {
         // TODO -
     }
 
-    async destroyAccount() {
-        // TODO -
+    async deleteAccount(accountId) {
+        const accounts = store.get('accounts');
+        const index = accounts.map(account => account.accountId).indexOf(accountId);
+
+        accounts.splice(index, 1);
+
+        store.set('accounts', accounts);
     }
 }
 
