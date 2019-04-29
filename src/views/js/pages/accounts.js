@@ -4,7 +4,8 @@
     const accountsTableBody = document.getElementById('accounts-table-body');
     const templateRow = document.getElementById('accounts-template-row');
 
-    let accountsStore = new Set();
+    const accountsStore = new Map();
+    let currentAccount;
 
     document.getElementById('accounts-create').onclick = createAccount;
 
@@ -13,28 +14,37 @@
     async function getAccounts() {
         const { accounts } = await callTunnel('local.getAccounts');
 
-        accountsStore = new Set(accounts);
+        accountsStore.clear();
+
+        for (const account of accounts) {
+            accountsStore.set(account.accountId, account);
+        }
 
         renderAccounts();
         window.hideLoading();
     }
 
     async function createAccount() {
-        const { accountId } = await callTunnel('local.createAccount');
-
-        accountsStore.add(accountId);
-
-        renderAccounts();
-        window.hideLoading();
+        await callTunnel('local.createAccount');
+        await getAccounts();
     }
 
     async function deleteAccount(accountId) {
-        await callTunnel('local.deleteAccount');
+        await callTunnel('local.deleteAccount', { accountId });
+        await getAccounts();
+    }
 
-        accountsStore.delete(accountId);
+    async function makeCurrent(accountId) {
+        await callTunnel('local.selectAccount', { accountId });
+        await getAccounts();
+    }
 
-        renderAccounts();
-        window.hideLoading();
+    async function exportAccount() {
+        // TODO -
+    }
+
+    async function importAccount() {
+        // TODO -
     }
 
     function clearAccountsTable() {
@@ -63,16 +73,18 @@
             return;
         }
 
-        const accountsArray = [...accountsStore];
+        const accountsArray = [...accountsStore.values()];
 
         for (let i = 0; i < accountsArray.length; i++) {
             const row = makeAccountRow(accountsArray[i], i + 1);
 
             accountsTableBody.appendChild(row);
         }
+
+        // TODO Render memo on top menu
     }
 
-    function makeAccountRow(accountId, index) {
+    function makeAccountRow(account, index) {
         const row = templateRow.cloneNode(true);
         const [counter, memo, id, control] = row.childNodes;
         const [
@@ -85,9 +97,18 @@
         row.id = '';
 
         counter.innerText = index;
-        id.innerText = accountId;
+        id.innerText = account.accountId;
         // TODO -
-        deleteAccountButton.onclick = deleteAccount.bind(null, accountId);
+        deleteAccountButton.onclick = deleteAccount.bind(null, account.accountId);
+
+        if (account.isCurrent) {
+            makeCurrentAccountButton.classList.add('d-none');
+            isCurrentAccountButton.classList.remove('d-none');
+        } else {
+            makeCurrentAccountButton.classList.remove('d-none');
+            isCurrentAccountButton.classList.add('d-none');
+            makeCurrentAccountButton.onclick = makeCurrent.bind(null, account.accountId);
+        }
 
         row.classList.remove('d-none');
 

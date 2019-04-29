@@ -14,7 +14,7 @@ class Local extends BasicController {
     }
 
     async getAccounts() {
-        return { accounts: store.get('accounts').map(account => account.accountId) };
+        return { accounts: store.get('accounts') };
     }
 
     async createAccount() {
@@ -30,12 +30,16 @@ class Local extends BasicController {
         accounts.push(account);
 
         store.set('accounts', accounts);
-
-        return { accountId };
     }
 
-    async selectAccount() {
-        // TODO -
+    async selectAccount({ accountId }) {
+        const accounts = store.get('accounts');
+
+        for (const account of accounts) {
+            account.isCurrent = account.accountId === accountId;
+        }
+
+        store.set('accounts', accounts);
     }
 
     async exportAccount() {
@@ -46,7 +50,7 @@ class Local extends BasicController {
         // TODO -
     }
 
-    async deleteAccount(accountId) {
+    async deleteAccount({ accountId }) {
         const accounts = store.get('accounts');
         const index = accounts.map(account => account.accountId).indexOf(accountId);
 
