@@ -3,11 +3,17 @@
     const accountsTableContainer = document.getElementById('accounts-table-container');
     const accountsTableBody = document.getElementById('accounts-table-body');
     const templateRow = document.getElementById('accounts-template-row');
+    const exportWindow = document.getElementById('accounts-export-window');
+    const exportAccountId = document.getElementById('accounts-export-account-id');
+    const exportPublicKey = document.getElementById('accounts-export-public-key');
+    const exportPrivateKey = document.getElementById('accounts-export-private-key');
+    const exportWindowClose = document.getElementById('accounts-export-window-close');
 
     const accountsStore = new Map();
     let currentAccount;
 
     document.getElementById('accounts-create').onclick = createAccount;
+    document.getElementById('accounts-export-window-close').onclick = closeExportAccountWindow;
 
     getAccounts().catch(/* do nothing */);
 
@@ -39,8 +45,16 @@
         await getAccounts();
     }
 
-    async function exportAccount() {
-        // TODO -
+    async function exportAccount(account) {
+        exportAccountId.value = account.accountId;
+        exportPublicKey.value = account.publicKey;
+        exportPrivateKey.value = account.privateKey;
+
+        exportWindow.classList.add('d-block');
+    }
+
+    function closeExportAccountWindow() {
+        exportWindow.classList.remove('d-block');
     }
 
     async function importAccount() {
@@ -98,7 +112,9 @@
 
         counter.innerText = index;
         id.innerText = account.accountId;
-        // TODO -
+        // TODO Memo
+
+        exportAccountButton.onclick = exportAccount.bind(null, account);
         deleteAccountButton.onclick = deleteAccount.bind(null, account.accountId);
 
         if (account.isCurrent) {

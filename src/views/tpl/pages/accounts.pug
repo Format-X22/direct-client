@@ -25,3 +25,22 @@ mixin accountsPage
                                 button.btn.btn-success.btn-sm.mr-1.d-none(type='submit') Текущий аккаунт
                                 button.btn.btn-info.btn-sm.mr-1(type='submit') &#10515;
                                 button.btn.btn-danger.btn-sm.mr-1(type='submit') &#10005;
+
+        div#accounts-export-window.modal(tabindex='-1' role='dialog')
+            div.modal-dialog.modal-xl.modal-dialog-centered(role='document')
+                div.modal-content
+                    div.modal-header
+                        h5.modal-title Экспорт аккаунта
+                    div.modal-body
+                        form
+                            strong Идентификатор аккаунта
+                            .form-group
+                                textarea#accounts-export-account-id.form-control(rows=1 readonly)
+                            strong Публичный ключ
+                            .form-group
+                                textarea#accounts-export-public-key.form-control(rows=3 readonly)
+                            strong Приватный ключ
+                            .form-group
+                                textarea#accounts-export-private-key.form-control(rows=3 readonly)
+                    div.modal-footer
+                        button#accounts-export-window-close.btn.btn-secondary(type='button') Закрыть
