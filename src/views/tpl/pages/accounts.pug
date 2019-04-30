@@ -44,3 +44,20 @@ mixin accountsPage
                                 textarea#accounts-export-private-key.form-control(rows=3 readonly)
                     div.modal-footer
                         button#accounts-export-window-close.btn.btn-secondary(type='button') Закрыть
+
+        div#accounts-import-window.modal(tabindex='-1' role='dialog')
+            div.modal-dialog.modal-xl.modal-dialog-centered(role='document')
+                div.modal-content
+                    div.modal-header
+                        h5.modal-title Экспорт аккаунта
+                    div.modal-body
+                        form
+                            strong Публичный ключ
+                            .form-group
+                                textarea#accounts-import-public-key.form-control(rows=3 required)
+                            strong Приватный ключ
+                            .form-group
+                                textarea#accounts-import-private-key.form-control(rows=3 required)
+                    div.modal-footer
+                        button#accounts-import-start.btn.btn-success(type='button') Импортировать
+                        button#accounts-import-window-close.btn.btn-danger(type='button') Закрыть

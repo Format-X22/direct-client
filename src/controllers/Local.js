@@ -19,11 +19,7 @@ class Local extends BasicController {
 
     async createAccount() {
         const { public: publicKey, private: privateKey } = keygen();
-        const idHash = crypto
-            .createHash('sha256')
-            .update(publicKey)
-            .digest('hex');
-        const accountId = `ID${idHash}`;
+        const accountId = this._makeAccountIdFrom(publicKey);
         const account = { accountId, publicKey, privateKey, isCurrent: false };
         const accounts = store.get('accounts');
 
@@ -42,12 +38,17 @@ class Local extends BasicController {
         store.set('accounts', accounts);
     }
 
-    async exportAccount() {
-        // TODO -
-    }
+    async importAccount({ publicKey, privateKey }) {
+        const accounts = store.get('accounts');
 
-    async importAccount() {
-        // TODO -
+        accounts.push({
+            publicKey,
+            privateKey,
+            isCurrent: false,
+            accountId: this._makeAccountIdFrom(publicKey),
+        });
+
+        store.set('accounts', accounts);
     }
 
     async deleteAccount({ accountId }) {
@@ -57,6 +58,15 @@ class Local extends BasicController {
         accounts.splice(index, 1);
 
         store.set('accounts', accounts);
+    }
+
+    _makeAccountIdFrom(publicKey) {
+        const idHash = crypto
+            .createHash('sha256')
+            .update(publicKey)
+            .digest('hex');
+
+        return `ID${idHash}`;
     }
 }
 

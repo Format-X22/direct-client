@@ -7,13 +7,18 @@
     const exportAccountId = document.getElementById('accounts-export-account-id');
     const exportPublicKey = document.getElementById('accounts-export-public-key');
     const exportPrivateKey = document.getElementById('accounts-export-private-key');
-    const exportWindowClose = document.getElementById('accounts-export-window-close');
+    const importWindow = document.getElementById('accounts-import-window');
+    const importPublicKey = document.getElementById('accounts-import-public-key');
+    const importPrivateKey = document.getElementById('accounts-import-private-key');
 
     const accountsStore = new Map();
     let currentAccount;
 
     document.getElementById('accounts-create').onclick = createAccount;
+    document.getElementById('accounts-import').onclick = showImportAccountWindow;
+    document.getElementById('accounts-import-start').onclick = importAccount;
     document.getElementById('accounts-export-window-close').onclick = closeExportAccountWindow;
+    document.getElementById('accounts-import-window-close').onclick = closeImportAccountWindow;
 
     getAccounts().catch(/* do nothing */);
 
@@ -58,7 +63,39 @@
     }
 
     async function importAccount() {
-        // TODO -
+        importPublicKey.classList.remove('is-invalid');
+        importPrivateKey.classList.remove('is-invalid');
+
+        const publicKey = importPublicKey.value;
+
+        if (!publicKey) {
+            importPublicKey.classList.add('is-invalid');
+            return;
+        }
+
+        const privateKey = importPrivateKey.value;
+
+        if (!privateKey) {
+            importPrivateKey.classList.add('is-invalid');
+            return;
+        }
+
+        await callTunnel('local.importAccount', { publicKey, privateKey });
+        await getAccounts();
+        closeImportAccountWindow();
+        
+        importPublicKey.value = '';
+        importPrivateKey.value = '';
+    }
+
+    function showImportAccountWindow() {
+        importPublicKey.classList.remove('is-invalid');
+        importPrivateKey.classList.remove('is-invalid');
+        importWindow.classList.add('d-block');
+    }
+
+    function closeImportAccountWindow() {
+        importWindow.classList.remove('d-block');
     }
 
     function clearAccountsTable() {
