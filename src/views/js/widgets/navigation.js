@@ -4,7 +4,7 @@
     const containers = document.querySelectorAll('[data-page-container]');
     const accountsContainer = document.getElementById('accounts');
     const containersMap = new Map();
-    const accountDisplay = document.getElementById('account-display');
+    const accountDisplay = document.getElementById('accounts-display-area');
 
     for (const container of containers) {
         containersMap.set(container.id, container);

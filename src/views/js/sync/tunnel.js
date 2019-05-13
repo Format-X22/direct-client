@@ -6,7 +6,7 @@
     window.callTunnel = (point, data) => {
         return new Promise(resolve => {
             window.showLoading();
-            window.ipc.on(point, (event, data) => handleResponse(data, resolve));
+            window.ipc.once(point, (event, data) => handleResponse(data, resolve));
             setTimeout(() => window.ipc.send(point, data), renderingTimeout);
         });
     };

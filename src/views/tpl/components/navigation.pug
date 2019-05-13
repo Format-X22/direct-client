@@ -12,9 +12,8 @@ mixin navigation
                 +menuItem('history', 'История')
                 +menuItem('control', 'Управление')
 
-            span#account-display-container.navbar-text
-                a#account-display.nav-link.clickable
+            span#accounts-top-display.navbar-text.p-0.d-none
+                a#accounts-display-area.nav-link.clickable
                     | Аккаунт:
-                    span#account-display-value.d-none  не выбран
-                    img.rounded-circle.ml-2(style='box-shadow: 0 1px 4px rgba(0,0,0,0.4);' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAUtJREFUeAHtmrEJAkEQRe/EFoxsxSoMDowswEQQqxDNbONswjZMBBOtQRQs4P9gGFzm/0s/Nzfz5y27e7v94rL9dMLPRLj2X+k2wASIO+AhIA5AJ0/ANErAODvCEMvXDupMzI4vT4ANYAhW101A9Q6z+kwAc6i6TtcB2fMwM5itI6L5eQiwDlTXTUD1DrP6TABzqLouT0D/vL7huUB0Ht6fHyGIDps5fD+anzwBNgDyJSCaAIEmwxJNALRHQOzZ/YDofjvbw2h+HgLZHWo9vglovUPZ+ZmAbIdbjy9PAD0XYPv5cfPf+wEsv27ADMoTYAMwIPVVE1C/x7hCE4D9qa/SdcBtOBEX8DqAvByWeX74Ex4C2J/6qgmo32NcoQnA/tRX5Qno16s7vB8QPZ/PZoidC7D/BfIE2IBsRFuPbwJa71B2fiYg2+HW438B+es7Fd7QEZUAAAAASUVORK5CYII=' width='32' height='32')
+                    img#accounts-top-display-image.rounded-circle.ml-2.account-memo(width='32' height='32')
                 
