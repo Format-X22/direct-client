@@ -5,7 +5,7 @@ mixin accountsPage
         +containerHeader('Ваши аккаунты', 'У вас ещё нет ни одного аккаунта...')
             +pageControlButton('Создать')#accounts-create
             +pageControlButton('Импортировать')#accounts-import
-        .row.mt-4.d-none#accounts-table-container
+        #accounts-table-container.row.mt-4.d-none
             .col
                 table.table
                     thead
@@ -26,12 +26,12 @@ mixin accountsPage
                                 button.btn.btn-info.btn-sm.mr-1(type='submit') &#10515;
                                 button.btn.btn-danger.btn-sm.mr-1(type='submit') &#10005;
 
-        div#accounts-export-window.modal(tabindex='-1' role='dialog')
-            div.modal-dialog.modal-xl.modal-dialog-centered(role='document')
-                div.modal-content
-                    div.modal-header
+        #accounts-export-window.modal(tabindex='-1' role='dialog')
+            .modal-dialog.modal-xl.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
                         h5.modal-title Экспорт аккаунта
-                    div.modal-body
+                    .modal-body
                         form
                             strong Идентификатор аккаунта
                             .form-group
@@ -42,15 +42,15 @@ mixin accountsPage
                             strong Приватный ключ
                             .form-group
                                 textarea#accounts-export-private-key.form-control(rows=3 readonly)
-                    div.modal-footer
+                    .modal-footer
                         button#accounts-export-window-close.btn.btn-secondary(type='button') Закрыть
 
-        div#accounts-import-window.modal(tabindex='-1' role='dialog')
-            div.modal-dialog.modal-xl.modal-dialog-centered(role='document')
-                div.modal-content
-                    div.modal-header
+        #accounts-import-window.modal(tabindex='-1' role='dialog')
+            .modal-dialog.modal-xl.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
                         h5.modal-title Экспорт аккаунта
-                    div.modal-body
+                    .modal-body
                         form
                             strong Публичный ключ
                             .form-group
@@ -58,17 +58,17 @@ mixin accountsPage
                             strong Приватный ключ
                             .form-group
                                 textarea#accounts-import-private-key.form-control(rows=3 required)
-                    div.modal-footer
+                    .modal-footer
                         button#accounts-import-start.btn.btn-success(type='button') Импортировать
-                        button#accounts-import-window-close.btn.btn-danger(type='button') Закрыть
+                        button#accounts-import-window-close.btn.btn-secondary(type='button') Закрыть
 
-        div#accounts-delete-accept-window.modal(tabindex='-1' role='dialog')
-            div.modal-dialog.modal-sm.modal-dialog-centered(role='document')
-                div.modal-content
-                    div.modal-header
+        #accounts-delete-accept-window.modal(tabindex='-1' role='dialog')
+            .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
                         h5.modal-title Удаление аккаунта
-                    div.modal-body
+                    .modal-body
                         p Удалить аккаунт навсегда?
-                    div.modal-footer
+                    .modal-footer
                         button#accounts-delete-accept.btn.btn-danger(type='button') Удалить
                         button#accounts-delete-close.btn.btn-secondary(type='button') Закрыть
