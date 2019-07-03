@@ -16,10 +16,10 @@ mixin accountsPage
                             th.text-right(scope='col') Управление
                     tbody#accounts-table-body
                         tr#accounts-template-row.d-none
-                            td(scope='row') 0
+                            td.align-middle(scope='row') 0
                             td
                                 img.rounded-circle.account-memo(width='32' height='32')
-                            td.align-middle ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.align-middle
                             td.text-right
                                 button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать текущим
                                 button.btn.btn-success.btn-sm.mr-1.d-none(type='submit') Текущий аккаунт
@@ -54,10 +54,10 @@ mixin accountsPage
                         form
                             strong Публичный ключ
                             .form-group
-                                textarea#accounts-import-public-key.form-control(rows=3 required)
+                                textarea#accounts-import-public-key.form-control(rows=3)
                             strong Приватный ключ
                             .form-group
-                                textarea#accounts-import-private-key.form-control(rows=3 required)
+                                textarea#accounts-import-private-key.form-control(rows=3)
                     .modal-footer
                         button#accounts-import-start.btn.btn-success(type='button') Импортировать
                         button#accounts-import-window-close.btn.btn-secondary(type='button') Закрыть

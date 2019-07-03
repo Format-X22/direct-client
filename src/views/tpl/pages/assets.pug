@@ -3,7 +3,7 @@ include ../components/widgets
 mixin assetsPage
     #assets.container.d-none(data-page-container)
         +containerHeader('Ваши ассеты', 'У вас ещё нет ни одного ассета...')
-            +pageControlButton('Обновить')(data-refresh='')
+            +pageControlButton('Обновить')(data-refresh='')#assets-refresh
 
         .row.mt-4
             .col

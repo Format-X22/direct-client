@@ -25,6 +25,9 @@
     document.getElementById('accounts-delete-accept').onclick = acceptDeleteAccount;
     document.getElementById('accounts-delete-close').onclick = closeDeleteAccountWindow;
 
+    importPublicKey.onkeyup = clearImportPublicKey;
+    importPrivateKey.onkeyup = clearImportPrivateKey;
+
     getAccounts().catch(/* do nothing */);
 
     async function getAccounts() {
@@ -68,8 +71,8 @@
     }
 
     async function importAccount() {
-        importPublicKey.classList.remove('is-invalid');
-        importPrivateKey.classList.remove('is-invalid');
+        clearImportPublicKey();
+        clearImportPrivateKey();
 
         const publicKey = importPublicKey.value;
 
@@ -94,8 +97,8 @@
     }
 
     function showImportAccountWindow() {
-        importPublicKey.classList.remove('is-invalid');
-        importPrivateKey.classList.remove('is-invalid');
+        clearImportPublicKey();
+        clearImportPrivateKey();
         importWindow.classList.add('d-block');
     }
 
@@ -196,5 +199,13 @@
         const canvas = window.blockies.create({ seed: accountId });
 
         return canvas.toDataURL('image/png');
+    }
+
+    function clearImportPublicKey() {
+        importPublicKey.classList.remove('is-invalid');
+    }
+
+    function clearImportPrivateKey() {
+        importPrivateKey.classList.remove('is-invalid');
     }
 })();

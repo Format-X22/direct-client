@@ -4,10 +4,14 @@ const BasicController = core.controllers.Basic;
 class Node extends BasicController {
     async sync() {
         // TODO -
+
+        return { nodes: [] };
     }
 
     async add() {
         // TODO -
+
+        return false;
     }
 
     async remove() {

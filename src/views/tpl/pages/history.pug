@@ -2,11 +2,95 @@ include ../components/widgets
 
 mixin historyPage
     #history.container.d-none(data-page-container)
-        +containerHeader('История', 'История пуста...')
-            +pageControlButton('Обновить')(data-refresh='')
-            +pageControlButton('Для своего аккаунта').d-none(data-for-personal='')
-            +pageControlButton('Для не своего аккаунта')(data-for-another='')
-            +pageControlButton('По номеру эвента')(data-by-event='')
-        .row
-            .col.text-center.mt-5
-                h4 Не доступно в альфа-версии
+        +containerHeader('История', '')
+            +pageControlButton('Сбросить')(data-for-personal='')#history-reset
+            +pageControlButton('Обновить')(data-refresh='')#history-refresh
+            +pageControlButton('Искать')(data-for-personal='')#history-search
+        #history-accounts-select.row.mt-4
+            .col
+                h3 Выберите аккаунт
+                table.table.table-sm
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Мемо
+                            th(scope='col') Аккаунт
+                            th.text-right(scope='col')
+                    tbody#history-accounts-table-body
+                        tr#history-accounts-template-row
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe5898731df37be4a73b4a6e2bd5964fe107cc606
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+
+        #history-nodes-select.row.mt-4
+            .col
+                h3 Выберите ноду
+                table.table.table-sm
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Мемо
+                            th(scope='col') Лого
+                            th(scope='col') Имя
+                            th.text-right(scope='col')
+                    tbody#history-nodes-table-body
+                        tr#history-nodes-template-row
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td
+                                img(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe58
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td
+                                img(width='32' height='32')
+                            td.align-middle ID40806df7
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td
+                                img(width='32' height='32')
+                            td.align-middle ID40806df7a8a2eaaffd363bafe5898
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;
+                        tr
+                            td.align-middle(scope='row') 0
+                            td
+                                img.rounded-circle.account-memo(width='32' height='32')
+                            td
+                                img(width='32' height='32')
+                            td.align-middle ID40806df7a
+                            td.text-right
+                                button.btn.btn-primary.btn-sm.mr-1(type='submit') Выбрать &#8594;

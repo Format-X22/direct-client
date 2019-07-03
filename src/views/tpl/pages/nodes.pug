@@ -18,7 +18,7 @@ mixin nodesPage
                             th(scope='col') Описание
                             th(scope='col') Мемо
                             th.text-right(scope='col' style='min-width: 160px;') Управление
-                    tbody#accounts-table-body
+                    tbody#nodes-table-body
                         tr#nodes-template-row.d-none
                             td(scope='row') 0
                             td
@@ -43,7 +43,7 @@ mixin nodesPage
                         form
                             strong Адрес (URL или IP)
                             .form-group
-                                input#nodes-connect-string.form-control(type='text' rows=3 required)
+                                input#nodes-connect-string.form-control(type='text')
                     .modal-footer
                         button#nodes-try-connect.btn.btn-success(type='button') Подключить
                         button#nodes-connect-window-close.btn.btn-secondary(type='button') Закрыть
